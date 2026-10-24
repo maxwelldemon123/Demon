@@ -1,0 +1,40 @@
+{
+  "listen": { "host": "127.0.0.1", "port": 8790 },
+  "modelId": "demon",
+  "upstreams": [
+    { "id": "local", "baseUrl": "http://127.0.0.1:8080/v1", "model": "your-model", "apiKey": "" },
+    { "id": "cloud", "baseUrl": "https://api.example.com/v1", "model": "chat", "apiKey": "sk-在这里填你的密钥" }
+  ],
+  "defaultUpstream": "local",
+  "launcher": {
+    "stPath": "C:/mylove/SillyTavern",
+    "stPort": 8000,
+    "gsvPath": "E:/GPT-SoVITS-v5-20261005/GPT-SoVITS-v2pro-20261006"
+  },
+  "charactersDir": "",
+  "characterVoices": {
+    "角色卡名字": "小d-柔软"
+  },
+  "voice": {
+    "endpoint": "http://127.0.0.1:9880",
+    "profile": "小d-柔软",
+    "autoPlay": true,
+    "speed": 1.0,
+    "volume": 1.0
+  },
+  "voiceProfiles": [
+    {
+      "id": "小d-柔软",
+      "name": "小d · 柔软",
+      "gptWeights": "GPT_weights_v2Pro/nightmare-glly-JP-e15.ckpt",
+      "sovitsWeights": "SoVITS_weights_v2Pro/nightmare-glly-JP_e8_s400.pth",
+      "refAudio": "voices/xiaod.wav",
+      "promptText": "私を強くして……どうするつもりですか？",
+      "promptLang": "ja"
+    }
+  ],
+  "engine": {
+    "keepAliveSeconds": 15,
+    "requestTimeoutSeconds": 180
+  }
+}
