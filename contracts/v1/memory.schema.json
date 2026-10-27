@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dsh-demon/contracts/v1/memory.schema.json",
+  "title": "dsh-demon memory API (v1)",
+  "definitions": {
+    "append": {
+      "type": "object",
+      "required": ["character", "kind", "text"],
+      "properties": {
+        "character": { "type": "string" },
+        "kind": { "enum": ["episodic", "fact", "emotion", "note"] },
+        "text": { "type": "string" },
+        "source": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "query": {
+      "type": "object",
+      "required": ["character", "query"],
+      "properties": {
+        "character": { "type": "string" },
+        "query": { "type": "string" },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 50, "default": 8 }
+      }
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "character": { "type": "string" },
+        "kind": { "type": "string" },
+        "text": { "type": "string" },
+        "score": { "type": "number" },
+        "created_at": { "type": "string" }
+      }
+    }
+  }
+}

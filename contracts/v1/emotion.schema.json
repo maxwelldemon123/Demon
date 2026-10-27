@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dsh-demon/contracts/v1/emotion.schema.json",
+  "title": "dsh-demon emotion state (v1)",
+  "definitions": {
+    "observation": {
+      "type": "object",
+      "required": ["subject", "label", "source", "at"],
+      "properties": {
+        "subject": { "enum": ["user", "companion"] },
+        "label": {
+          "enum": ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"]
+        },
+        "intensity": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "source": { "enum": ["audio", "text", "manual", "inference"] },
+        "at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "character": { "type": "string" },
+        "user": { "$ref": "#/definitions/observation" },
+        "companion": { "$ref": "#/definitions/observation" },
+        "revision": { "type": "integer" }
+      }
+    }
+  }
+}

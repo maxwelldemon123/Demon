@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dsh-demon/contracts/v1/events.schema.json",
+  "title": "Demon <-> DSH events (WebSocket /v1/events)",
+  "definitions": {
+    "emotion": {
+      "type": "object",
+      "required": ["type", "emotion", "at"],
+      "properties": {
+        "type": { "const": "emotion" },
+        "emotion": { "enum": ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"] },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "enum": ["audio", "text", "manual"] },
+        "character": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "speech": {
+      "type": "object",
+      "required": ["type", "state"],
+      "properties": {
+        "type": { "const": "speech" },
+        "state": { "enum": ["started", "ended"] },
+        "text": { "type": "string" },
+        "voice": { "type": "string" },
+        "character": { "type": "string" }
+      }
+    },
+    "model_clicked": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "model_clicked" },
+        "area": { "type": "string" },
+        "character": { "type": "string" }
+      }
+    },
+    "command": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["say", "expression", "motion"] },
+        "text": { "type": "string" },
+        "emotion": { "type": "string" },
+        "voice": { "type": "string" },
+        "hotkey": { "type": "string" }
+      }
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/definitions/emotion" },
+    { "$ref": "#/definitions/speech" },
+    { "$ref": "#/definitions/model_clicked" },
+    { "$ref": "#/definitions/command" }
+  ]
+}
