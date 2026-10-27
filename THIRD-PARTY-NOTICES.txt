@@ -1,68 +1,13 @@
-Demon 1.0.0 — Third-Party Notices
-==================================
+THIRD-PARTY NOTICES
+===================
 
-Demon itself is licensed under the MIT License (see LICENSE).
+Qt 6.8.3 — LGPL-3.0（动态链接，DLL 可替换）
+FFmpeg（Qt 自带构建）— LGPL-2.1+
+MSVC 运行库 — 随系统 / VC Redist
+SillyTavern — AGPL-3.0（仅通过 HTTP 调用，未打包）
+GPT-SoVITS — MIT（仅通过 HTTP 调用，未打包）
+AAAAGENT — 非商业许可 + 署名（参考其七情绪协议与 Live2D 模块；见 third_party/aaaagent）
 
-The release package bundles the following third-party components. They are
-distributed under their own licenses, which are not affected by Demon's MIT
-license.
+Live2D Cubism Core (Web) — Live2D Proprietary Software License（非商业 + 署名，随本地桌宠分发）
+Live2D 模型 DS鲸鱼娘 — 用户自备，随 VTube Studio 模型目录只读复制，不进入 git
 
-1. Qt 6.8.3
------------
-Project : https://www.qt.io/  (https://code.qt.io/)
-License : GNU Lesser General Public License v3 (LGPL-3.0)
-Files   : Qt6Core.dll, Qt6Gui.dll, Qt6Widgets.dll, Qt6Network.dll,
-          Qt6Multimedia.dll, Qt6Svg.dll, and the plugin folders
-          (platforms\, multimedia\, imageformats\, styles\, tls\,
-           iconengines\, generic\, networkinformation\)
-
-How LGPL-3.0 is satisfied:
-
-  * Dynamic linking only. Demon links against the unmodified Qt DLLs at
-    runtime; the DLLs are shipped as separate files in this package.
-  * Replaceability. End users may replace these DLLs with their own builds
-    of Qt, as required by the LGPL.
-  * No modifications. The bundled Qt binaries are unmodified upstream builds
-    from the official Qt online installer.
-  * Source code. Available from https://download.qt.io/ for the exact
-    version 6.8.3.
-
-If you redistribute this package, keep these DLLs as separate files and keep
-this notice together with the package.
-
-2. FFmpeg (via Qt Multimedia)
------------------------------
-Project : https://ffmpeg.org/
-License : GNU Lesser General Public License v2.1 or later (LGPL-2.1+)
-Files   : avcodec-61.dll, avformat-61.dll, avutil-59.dll,
-          swresample-5.dll, swscale-8.dll,
-          multimedia\ffmpegmediaplugin.dll
-
-These are the FFmpeg build shipped with the official Qt 6.8.3 binaries.
-They are dynamically loaded by Qt Multimedia, unmodified, and can be replaced
-by the user. Source code: https://ffmpeg.org/download.html
-
-3. Microsoft Visual C++ Runtime
--------------------------------
-Demon is built with MSVC 2022. The release package does not bundle the
-runtime; it uses the one installed with Windows or with the Visual C++
-Redistributable. See https://aka.ms/vs/17/release/vc_redist.x64.exe
-
-4. SillyTavern (not bundled)
-----------------------------
-Demon talks to SillyTavern over HTTP but does not include it.
-Project: https://github.com/SillyTavern/SillyTavern (AGPL-3.0)
-
-5. GPT-SoVITS (not bundled)
----------------------------
-Demon calls a locally running GPT-SoVITS api_v2 server over HTTP but does not
-include it. Project: https://github.com/RVC-Boss/GPT-SoVITS (MIT)
-
-6. smartdemon extension (separate download)
--------------------------------------------
-The SillyTavern front-end extension is published separately and is licensed
-under the MIT License.
-
-----------------------------------------------------------------------------
-If you believe a component is missing from this notice, please open an issue
-in the project repository.

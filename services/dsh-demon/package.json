@@ -1,0 +1,19 @@
+{
+  "name": "dsh-demon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local memory/emotion service for Demon and SillyTavern",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "scan": "node src/scan-once.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "@fastify/websocket": "^11.0.2",
+    "fastify": "^5.2.0"
+  }
+}
